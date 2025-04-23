@@ -17,6 +17,7 @@ This directory contains the implementation for removing noise from images. It in
 - `test.py`: Testing on a new set of images.
 - `model/`: Saved model.
 - `result/`: Results including the loss graph, PSNR values (Before and After), and visual comparisons (Original, Noisy, Denoised Images).
+- `result-medical/`: Results for medical imagesincluding PSNR values (Before and After), and visual comparisons (Original, Noisy, Denoised Images).
 
 ### 2. **Inpainting**
 This directory contains the implementation for reconstructing corrupted parts of images. It includes:
@@ -26,6 +27,7 @@ This directory contains the implementation for reconstructing corrupted parts of
 - `test.py`: Testing on a new set of images.
 - `model/`: Saved model.
 - `result/`: Results including the loss graph, PSNR values (Before and After), and visual comparisons (Original Image, Text-Overlayed Image, Reconstructed Image).
+- `result-medical/`: Results for medical imagesincluding PSNR values (Before and After), and visual comparisons (Original, Noisy, Denoised Images).
 
 ---
 
