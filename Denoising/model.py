@@ -2,12 +2,13 @@ import torch
 import torch.nn as nn
 
 class DenoisingAutoencoder(nn.Module):
-    def __init__(self, input_dim, hidden_dim, rho=0.05, beta=1e-2):
+    def __init__(self, input_dim, hidden_dim, rho=0.05, beta=1e-2, lambda_=1e-4):
         super().__init__()
         self.encoder = nn.Linear(input_dim, hidden_dim)
         self.decoder = nn.Linear(hidden_dim, input_dim)
         self.rho = rho
         self.beta = beta
+        self.lambda_ = lambda_
 
     def forward(self, x):
         h = torch.sigmoid(self.encoder(x))
@@ -21,12 +22,20 @@ class DenoisingAutoencoder(nn.Module):
                  (1 - rho) * torch.log((1 - rho) / (1 - rho_hat + 1e-8))
         return self.beta * kl_div.sum()
 
+    def weight_regularization(self):
+        reg = 0
+        for name, param in self.named_parameters():
+            if 'bias' not in name and param.requires_grad:
+                reg += torch.sum(param ** 2)
+        return self.lambda_ * reg
+
 
 class SSDA(nn.Module):
-    def __init__(self, input_dim, hidden_dims, rho=0.05, beta=1e-2):
+    def __init__(self, input_dim, hidden_dims, rho=0.05, beta=1e-2, lambda_=1e-4):
         super().__init__()
-        self.dae1 = DenoisingAutoencoder(input_dim, hidden_dims[0], rho, beta)
-        self.dae2 = DenoisingAutoencoder(hidden_dims[0], hidden_dims[1], rho, beta)
+        self.dae1 = DenoisingAutoencoder(input_dim, hidden_dims[0], rho, beta, lambda_)
+        self.dae2 = DenoisingAutoencoder(hidden_dims[0], hidden_dims[1], rho, beta, lambda_)
+        self.lambda_ = lambda_
 
         self.encoder1 = self.dae1.encoder
         self.encoder2 = self.dae2.encoder
@@ -39,3 +48,6 @@ class SSDA(nn.Module):
         out2 = torch.sigmoid(self.decoder2(h2))
         out1 = torch.sigmoid(self.decoder1(out2))
         return out1
+
+    def weight_regularization(self):
+        return self.dae1.weight_regularization() + self.dae2.weight_regularization()

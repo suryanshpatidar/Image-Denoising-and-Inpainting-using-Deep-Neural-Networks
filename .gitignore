@@ -1,0 +1,16 @@
+grayscale_images/
+medical-images/
+testing-images/
+Denoising/result/*.png
+!Denoising/result/test_image_0.png
+!Denoising/result/loss_graphs.png
+Denoising/result-medical/*.png
+!Denoising/result-medical/test_image_0.png
+!Denoising/result-medical/loss_graphs.png
+Inpainting/result/*.png
+!Inpainting/result/test_image_0.png
+!Inpainting/result/loss_graphs.png
+Inpainting/result-medical/*.png
+!Inpainting/result-medical/test_image_0.png
+!Inpainting/result-medical/loss_graphs.png
+__pycache__/

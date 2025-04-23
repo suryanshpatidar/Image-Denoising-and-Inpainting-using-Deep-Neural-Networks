@@ -23,7 +23,7 @@ def pretrain_da(model, dataloader, epochs=15, lr=1e-3):
         for xb, yb in dataloader:
             xb, yb = xb.to(device), yb.to(device)
             out, h = model(xb)
-            loss = criterion(out, yb) + model.sparsity_loss(h)
+            loss = criterion(out, yb) + model.sparsity_loss(h) + model.weight_regularization()
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -51,7 +51,7 @@ def fine_tune(model, dataloader, epochs=25, lr=1e-3):
         for xb, yb in dataloader:
             xb, yb = xb.to(device), yb.to(device)
             out = model(xb)
-            loss = criterion(out, yb)
+            loss = criterion(out, yb) + model.weight_regularization()
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
