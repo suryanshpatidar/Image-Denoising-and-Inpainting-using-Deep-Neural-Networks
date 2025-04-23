@@ -7,7 +7,7 @@ This project focuses on two key image processing tasks: **Denoising** and **Inpa
 
 ---
 
-## 📁 Directory Structure
+## Directory Structure
 
 ### 1. **Denoising**
 This directory contains the implementation for removing noise from images. It includes:
@@ -31,18 +31,18 @@ This directory contains the implementation for reconstructing corrupted parts of
 
 ---
 
-## 📊 Datasets Used
+## Datasets Used
 
-### 🔧 Training Data
+### Training Data
 - **[Flickr1024 Dataset](https://yingqianwang.github.io/Flickr1024/)** - Large Scale Image Dataset for Stereo Image Super-resolution
 - **[DIV2K Dataset (High Resolution)](https://www.kaggle.com/datasets/soumikrakshit/div2k-high-resolution-images)** - DIVerse 2K resolution high quality images
-### 🔬 Testing Data
+### Testing Data
 - **[BSDS300 Dataset](https://www.kaggle.com/datasets/adheshgarg/bsds300)** - Berkeley Segmentation Dataset
 - **[Brain Tumor Classification Dataset](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri)** - Brain Tumor Dataset
 
 ---
 
-## 🖼️ Results
+## Results
 
 ### Denoising Example
 #### Non-medical image
@@ -58,21 +58,29 @@ This directory contains the implementation for reconstructing corrupted parts of
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 1. Clone the repository
 2. Install the required dependencies:
     ```bash
     pip install -r requirements.txt
     ```
+3. Add the datasets:  
+    - Download the datasets from the provided links in the **Access Results and Datasets** section.  
+    - Place them in the respective directories:  
+        ```
+        ├── grayscale_images/
+        ├── medical-images/
+        ├── testing-images/
+        ```
 
-3. Run training:
+4. Run training:
     ```bash
     python Denoising/train.py
     python Inpainting/train.py
     ```
 
-4. Run testing:
+5. Run testing:
     ```bash
     python Denoising/test.py
     python Inpainting/test.py
@@ -80,13 +88,13 @@ This directory contains the implementation for reconstructing corrupted parts of
 
 ---
 
-## 📚 Reference
+## Reference
 
 Xie, J., Xu, L., & Chen, E. (2012). *Image Denoising and Inpainting with Deep Neural Networks*. Advances in Neural Information Processing Systems.  
 🔗 [Read the full paper here](https://papers.nips.cc/paper_files/paper/2012/file/6cdd60ea0045eb7a6ec44c54d29ed402-Paper.pdf)
 
 
-## 📂 Access Results and Datasets
+## Access Results and Datasets
 
 You can access the results and datasets used in this project through the following link:  
 🔗 [Google Drive - Results and Datasets](https://drive.google.com/drive/folders/1HnpgqLX8Ej8iO9E8UE3cIiZNZ7nooPg2?usp=sharing)
