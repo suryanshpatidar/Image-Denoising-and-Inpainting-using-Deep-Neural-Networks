@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from model import StackedSSDA
+from model import SSDA
 from utils import load_image, extract_patches, psnr,add_gaussian_noise
 import matplotlib.pyplot as plt
 import os
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     sigma = 50
     input_dim = 16 * 16
     hidden_dims = [512, 256]
-    ssda = StackedSSDA(input_dim, hidden_dims).to(device)
+    ssda = SSDA(input_dim, hidden_dims).to(device)
     ssda.load_state_dict(torch.load("model/ssda_denoise.pth", map_location=device))
     ssda.eval()
 

@@ -22,7 +22,7 @@ class DenoisingAutoencoder(nn.Module):
         return self.beta * kl_div.sum()
 
 
-class StackedSSDA(nn.Module):
+class SSDA(nn.Module):
     def __init__(self, input_dim, hidden_dims, rho=0.05, beta=1e-2):
         super().__init__()
         self.dae1 = DenoisingAutoencoder(input_dim, hidden_dims[0], rho, beta)

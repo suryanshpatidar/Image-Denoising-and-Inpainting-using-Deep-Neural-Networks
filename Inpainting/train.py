@@ -1,6 +1,6 @@
 import torch
 from torch import optim
-from model import DenoisingAutoencoder, StackedSSDA
+from model import DenoisingAutoencoder, SSDA
 from utils import prepare_data
 import os
 import matplotlib.pyplot as plt
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     print("Pretraining DAE2...")
     pretrain_da(dae2, h1_loader)
 
-    ssda = StackedSSDA(input_dim, hidden_dims).to(device)
+    ssda = SSDA(input_dim, hidden_dims).to(device)
     ssda.load_state_dict({
         **{f'dae1.{k}': v for k, v in dae1.state_dict().items()},
         **{f'dae2.{k}': v for k, v in dae2.state_dict().items()}
