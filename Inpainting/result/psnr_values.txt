@@ -1,0 +1,2 @@
+Average PSNR (Text-overlay): 19.35 dB
+Average PSNR (Text-removal): 27.56 dB

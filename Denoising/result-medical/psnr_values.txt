@@ -1,0 +1,2 @@
+Average PSNR (Noisy): 15.57 dB
+Average PSNR (Denoised): 26.55 dB
