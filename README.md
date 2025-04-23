@@ -19,7 +19,7 @@ This directory contains the implementation for removing noise from images. It in
 - `result/`: Results including the loss graph, PSNR values (Before and After), and visual comparisons (Original, Noisy, Denoised Images).
 
 ### 2. **Inpainting**
-This directory contains the implementation for reconstructing missing parts of images. It includes:
+This directory contains the implementation for reconstructing corrupted parts of images. It includes:
 - `model.py`: The model used for inpainting.
 - `utils.py`: Helper functions for preprocessing and evaluation.
 - `train.py`: Training the model on the data.
